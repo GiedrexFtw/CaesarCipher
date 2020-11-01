@@ -3,7 +3,7 @@ using System.Text;
 
 namespace CaesarsCipher
 {
-    class Program
+    public class Program
     {
         private const int ALPHABET_SIZE = 26;
         static void Main(string[] args)
@@ -47,12 +47,12 @@ namespace CaesarsCipher
            
         }
 
-        private static string Decipher(string text, int key)
+        public static string Decipher(string text, int key)
         {
             return Encipher(text, -key);
         }
 
-        private static string Encipher(string text, int key)
+        public static string Encipher(string text, int key)
         {
             key %= ALPHABET_SIZE;
             StringBuilder encipheredText = new StringBuilder();
@@ -66,12 +66,14 @@ namespace CaesarsCipher
                 {
                     encipheredText.Append(GetLetter(letter, key, 'A', 'Z'));
                 }
+                else
+                {
+                    encipheredText.Append(letter);
+                }
             }
             return encipheredText.ToString();
         }
-        
-
-        private static char GetLetter(char letter, int key, char lowest, char highest)
+        public static char GetLetter(char letter, int key, char lowest, char highest)
         {
             letter += (char)key;
             if (letter < lowest)
